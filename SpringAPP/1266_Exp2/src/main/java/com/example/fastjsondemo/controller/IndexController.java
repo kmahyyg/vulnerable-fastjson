@@ -27,6 +27,7 @@ public class IndexController {
 
     @RequestMapping("/parseTxt")
     protected String ParseTxt(@RequestBody String body){
+        ParserConfig.getGlobalInstance().setAutoTypeSupport(true);
         try {
             Object obj = JSON.parse(body);
             return obj.toString();
