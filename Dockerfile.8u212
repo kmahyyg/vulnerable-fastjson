@@ -2,6 +2,6 @@ FROM openjdk:8u212-alpine
 LABEL maintainer="kmahyyg <16604643+kmahyyg@users.noreply.github.com>"
 LABEL java.version="1.8.0_212"
 EXPOSE 8092 8096 8098
-RUN apk update && apk add netcat-openbsd
+RUN apk update && apk add netcat-openbsd bash socat
 COPY fastjsondemo-0.0.1-SNAPSHOT.jar /usr/local/fastjsondemo.jar
 CMD ["java", "-Dserver.address=0.0.0.0", "-jar", "/usr/local/fastjsondemo.jar"]
